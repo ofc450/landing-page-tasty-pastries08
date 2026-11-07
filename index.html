@@ -224,7 +224,7 @@
         function pedirPorWhatsApp(nombreProd, precio) {
             const precioVES = tasaBCV ? (precio * tasaBCV).toFixed(2) : 'N/A';
             const mensaje = `Hola Tasti Pastries, deseo realizar un pedido: *${nombreProd}* (Precio: $${precio.toFixed(2)} USD / ${precioVES} VES). ¿Me confirman disponibilidad para el horneado?`;
-            const numeroWhatsApp = "584120000000"; // Sustituye por tu número real con código de país
+            const numeroWhatsApp = "584242942992"; // Sustituye por tu número real con código de país
             window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
