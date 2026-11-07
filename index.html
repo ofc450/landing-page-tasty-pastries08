@@ -158,27 +158,27 @@
         </div>
     </div>
 
-    <!-- Script de lógica e inventario con conversión BCV en vivo y Fecha/Hora -->
+    <!-- Script de lógica e inventario con control de activo/inactivo -->
     <script>
         const productos = [
-            // Ponqués
-            { id: 1, categoria: 'ponques', nombre: '🥕 Ponqué de Zanahoria', desc: 'Un clásico lleno de sabor y suavidad.', precio: 27, img: 'Gemini_Generated_Image (3).jpeg' },
-            { id: 2, categoria: 'ponques', nombre: '🍫 Ponqué de Chocolate', desc: 'El placer intenso que todos aman.', precio: 24, img: 'Gemini_Generated_Image (8).jpeg' },
-            { id: 3, categoria: 'ponques', nombre: '⚪️🟫 Ponqué Marmoleado', desc: 'La combinación perfecta de vainilla y chocolate.', precio: 24, img: 'Copia de importante (3).jpg' },
-            { id: 4, categoria: 'ponques', nombre: '🍊 Ponqué de Naranja', desc: 'Fresco y cítrico, ideal para energizar tu día.', precio: 20, img: 'Copia de importante (5).jpg' },
-            { id: 5, categoria: 'ponques', nombre: '🍋 Ponqué de Limón', desc: 'Un toque de acidez y dulzura que deleita.', precio: 24, img: '' },
-            { id: 6, categoria: 'ponques', nombre: '🎃 Ponqué de Auyama', desc: 'Suave y especiado, una delicia reconfortante.', precio: 26, img: 'Gemini_Generated_Image (1).jpeg' },
-            { id: 7, categoria: 'ponques', nombre: '💜 Ponqué de Parchita', desc: 'Exótico y vibrante, una explosión de sabor.', precio: 24, img: 'Copia de importante (9).jpg' },
+            // Ponqués (cambia activo a false para pausar la venta temporalmente)
+            { id: 1, categoria: 'ponques', nombre: '🥕 Ponqué de Zanahoria', desc: 'Un clásico lleno de sabor y suavidad.', precio: 27, activo: true, img: 'Gemini_Generated_Image (3).jpeg' },
+            { id: 2, categoria: 'ponques', nombre: '🍫 Ponqué de Chocolate', desc: 'El placer intenso que todos aman.', precio: 24, activo: true, img: 'Gemini_Generated_Image (8).jpeg' },
+            { id: 3, categoria: 'ponques', nombre: '⚪️🟫 Ponqué Marmoleado', desc: 'La combinación perfecta de vainilla y chocolate.', precio: 24, activo: true, img: 'Copia de importante (3).jpg' },
+            { id: 4, categoria: 'ponques', nombre: '🍊 Ponqué de Naranja', desc: 'Fresco y cítrico, ideal para energizar tu día.', precio: 20, activo: true, img: 'Copia de importante (5).jpg' },
+            { id: 5, categoria: 'ponques', nombre: '🍋 Ponqué de Limón', desc: 'Un toque de acidez y dulzura que deleita.', precio: 24, activo: true, img: '' },
+            { id: 6, categoria: 'ponques', nombre: '🎃 Ponqué de Auyama', desc: 'Suave y especiado, una delicia reconfortante.', precio: 26, activo: true, img: 'Gemini_Generated_Image (1).jpeg' },
+            { id: 7, categoria: 'ponques', nombre: '💜 Ponqué de Parchita', desc: 'Exótico y vibrante, una explosión de sabor.', precio: 24, activo: true, img: 'Copia de importante (9).jpg' },
             
             // Coffee Cakes
-            { id: 8, categoria: 'coffeecakes', nombre: '🍎 Apple Coffee Cake', desc: 'Trozos de manzana y canela en un pastel irresistible.', precio: 30, img: 'Gemini_Generated_Image (2).jpeg' },
-            { id: 9, categoria: 'coffeecakes', nombre: '🍇 Blackberry Coffee Cake', desc: 'El dulzor de las moras con el toque crujiente del crumble.', precio: 30, img: '' },
-            { id: 10, categoria: 'coffeecakes', nombre: '🌟 4 Delicias', desc: 'Cambur, manzana verde, nueces y pasas en un solo ponqué.', precio: 26, img: 'Gemini_Generated_Image.jpeg' },
-            { id: 11, categoria: 'coffeecakes', nombre: '🧡 Cinnamon Coffee Cake', desc: 'El aroma y sabor reconfortante de la canela.', precio: 24, img: '' },
+            { id: 8, categoria: 'coffeecakes', nombre: '🍎 Apple Coffee Cake', desc: 'Trozos de manzana y canela en un pastel irresistible.', precio: 30, activo: true, img: 'Gemini_Generated_Image (2).jpeg' },
+            { id: 9, categoria: 'coffeecakes', nombre: '🍇 Blackberry Coffee Cake', desc: 'El dulzor de las moras con el toque crujiente del crumble.', precio: 30, activo: true, img: '' },
+            { id: 10, categoria: 'coffeecakes', nombre: '🌟 4 Delicias', desc: 'Cambur, manzana verde, nueces y pasas en un solo ponqué.', precio: 26, activo: true, img: 'Gemini_Generated_Image.jpeg' },
+            { id: 11, categoria: 'coffeecakes', nombre: '🧡 Cinnamon Coffee Cake', desc: 'El aroma y sabor reconfortante de la canela.', precio: 24, activo: true, img: '' },
 
             // Otras Delicias
-            { id: 12, categoria: 'otras', nombre: '🍫 Brownie de Batata', desc: 'Una opción innovadora, fudgy y llena de sabor.', precio: 28, img: 'Gemini_Generated_Image (4).jpeg' },
-            { id: 13, categoria: 'otras', nombre: '🍮 Quesillo (300g)', desc: 'Tradicional, cremoso y perfecto para consentirte.', precio: 8, img: '' }
+            { id: 12, categoria: 'otras', nombre: '🍫 Brownie de Batata', desc: 'Una opción innovadora, fudgy y llena de sabor.', precio: 28, activo: true, img: 'Gemini_Generated_Image (4).jpeg' },
+            { id: 13, categoria: 'otras', nombre: '🍮 Quesillo (300g)', desc: 'Tradicional, cremoso y perfecto para consentirte.', precio: 8, activo: true, img: '' }
         ];
 
         let carrito = {};
@@ -224,6 +224,9 @@
             const gridOtras = document.getElementById('grid-otras');
 
             productos.forEach(p => {
+                // Si el producto está inactivo (activo: false), no se muestra en la web
+                if (p.activo === false) return;
+
                 const imgTag = p.img ? `<img src="${p.img}" alt="${p.nombre}" class="w-full h-56 object-cover" onerror="this.style.display='none'">` : `<div class="w-full h-56 bg-[#f4ebe1] flex items-center justify-center text-gray-400 font-medium">Foto Próximamente</div>`;
                 
                 const html = `
@@ -384,7 +387,7 @@
             
             mensaje += `Fecha y hora: ${fechaHoraStr}%0A`;
 
-            const numeroWhatsApp = "584242942992"; 
+            const numeroWhatsApp = "584121287039"; 
             window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
 
             // Vaciar el carrito, actualizar la vista y ocultar el panel
